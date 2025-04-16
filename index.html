@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reprodutor de Música - PS5</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #111;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00ffd5;
+    }
+
+    input[type="file"] {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #00ffd5;
+      border: none;
+      color: #111;
+      cursor: pointer;
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎶 Reprodutor de Música</h1>
+  <p>Selecione uma música do seu pendrive:</p>
+  <input type="file" id="fileInput" accept="audio/*" />
+  
+  <audio id="audioPlayer" controls>
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <footer>
+    <p>Feito com ❤️ para PS5</p>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        audioPlayer.src = url;
+        audioPlayer.play();
+      }
+    });
+  </script>
+
+</body>
+</html>
